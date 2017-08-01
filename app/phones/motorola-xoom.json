@@ -1,0 +1,33 @@
+{
+  "id": "motorola-xoom",
+  "name": "Motorola XOOM",
+  "description": "The Next, Next Generation tablet.",
+  "fulldescription": "Long, long description.",
+  "additionalFeatures": "Contour Display, Near Field Communications (NFC)",
+  "price": 999999,
+  "android": {
+    "os": "Android 2.3",
+    "ui": "Android"
+  },
+  "images": [
+    "img/phones/motorola-xoom-with-wi-fi.jpg",
+    "img/phones/motorola-xoom.jpg",
+    "img/phones/nexus-s.jpg"
+  ],
+  "availability": [
+    123,
+    321,
+    111,
+    222,
+    333
+  ],
+  "connectivity": {
+    "gps": true,
+    "infrared": false
+  },
+
+  "storage": {
+    "flash": "16384MB",
+    "ram": "512MB"
+  }
+}

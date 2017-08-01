@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="page-header">Shopping cart</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Count</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="phone in cart">
+              <td>
+                <a href="#!/phones/{{phone.id}}">
+                  <img ng-src="{{phone.imageUrl}}" height="50px" alt="{{phone.name}}" />
+                </a>
+              </td>
+              <td>
+                <a href="#!/phones/{{phone.id}}"><h4>{{phone.name}}</h4></a>
+              </td>
+              <td>{{phone.price}}</td>
+              <td>{{phone.cnt}}</td>
+              <td>{{phone.cnt * phone.price}}</td>
+              <td>
+                <button ng-click="deleteFromCart(phone.id)" type="button">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
