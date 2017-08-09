@@ -6,9 +6,21 @@
   "repository": "",
   "license": "",
   "devDependencies": {
+    "angular": "^1.6.5",
+    "angular-resource": "^1.6.5",
+    "angular-ui-router": "^0.3.2",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.2.5",
+    "bootstrap": "^3.3.7",
     "bower": "^1.7.7",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
     "http-server": "^0.9.0",
-    "webpack": "^2.7.0"
+    "jquery": "^3.2.1",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^2.7.0",
+    "webpack-isomorphic-tools": "^3.0.3"
   },
   "scripts": {
     "postinstall": "bower install",

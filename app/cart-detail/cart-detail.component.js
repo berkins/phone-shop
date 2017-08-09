@@ -1,18 +1,17 @@
 angular.
-  module('cartDetail').
+  module('phoneShop').
   component('cartDetail', {
     templateUrl: 'cart-detail/cart-detail.template.html',
-    controller: ['$scope', 'Phone', 'Cart', CartDetailController]
+    controller: ['Phone', 'Cart', CartDetailController]
   });
 
-function CartDetailController($scope, Phone, Cart) {
-  $scope.cart           = [];
-  $scope.deleteFromCart = deleteFromCart;
+function CartDetailController(Phone, Cart) {
+  var self = this;
+  self.cart           = [];
+  self.deleteFromCart = deleteFromCart;
 
   var currentCart = Cart.currentCart();
-  var phones      = Phone.query();
-
-  phones.$promise.then(function(result) {
+  var phones      = Phone.query({}, function(result) {
     phones = result;
     var phonesObj = phones.reduce(function(obj, cur) {
       obj[cur.id] = {
@@ -23,7 +22,7 @@ function CartDetailController($scope, Phone, Cart) {
       return obj;
     }, {});
     for (phone in currentCart) {
-      $scope.cart.push(
+      self.cart.push(
         {
           id: phone,
           cnt: currentCart[phone], 
@@ -37,8 +36,7 @@ function CartDetailController($scope, Phone, Cart) {
 
   function deleteFromCart(phoneId) {
     currentCart = Cart.deleteFromCart(phoneId);
-    phones = Phone.query();
-    phones.$promise.then(function(result) {
+    phones = Phone.query({}, function(result) {
       phones = result;
       var phonesObj = phones.reduce(function(obj, cur) {
         obj[cur.id] = {
@@ -48,9 +46,9 @@ function CartDetailController($scope, Phone, Cart) {
         };
         return obj;
       }, {});
-      $scope.cart = [];
+      self.cart = [];
       for (phone in currentCart) {
-        $scope.cart.push(
+        self.cart.push(
           {
             id: phone,
             cnt: currentCart[phone], 

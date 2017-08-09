@@ -3,16 +3,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{phone.name}}</h4>
+        <h4 class="modal-title" id="myModalLabel">{{$ctrl.phone.name}}</h4>
       </div>
       <div class="modal-body">
-        <h1 class="page-header">{{phone.name}}</h1>
-        <p>{{phone.description}}</p>
-        <p style="color: orange;font-weight: bold;font-size: 16pt;">${{phone.price}}</p>
+        <h1 class="page-header">{{$ctrl.phone.name}}</h1>
+        <p>{{$ctrl.phone.description}}</p>
+        <p style="color: orange;font-weight: bold;font-size: 16pt;">${{$ctrl.phone.price}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-        <button ng-click="addToCart(phone.id)" type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Buy</button>
+        <button ng-click="$ctrl.addToCart($ctrl.phone.id)" type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Buy</button>
       </div>
     </div>
   </div>
@@ -22,37 +22,37 @@
   <div class="row">
     <div class="col-sm-4">
       <div style="min-height: 200px;">
-        <img ng-src="{{mainImageUrl}}" class="phone" width="100%" />
+        <img ng-src="{{$ctrl.mainImageUrl}}" class="phone" width="100%" />
       </div>
       <div class="row placeholders">
-        <div ng-repeat="img in phone.images" class="col-sm-3 placeholder">
-          <img ng-src="{{img}}" ng-click="setImage(img)" width="100%" style="cursor: pointer;" />
+        <div ng-repeat="img in $ctrl.phone.images" class="col-sm-3 placeholder">
+          <img ng-src="{{img}}" ng-click="$ctrl.setImage(img)" width="100%" style="cursor: pointer;" />
         </div>
       </div>
     </div>
 
     <div class="col-sm-8">
-      <h1 class="page-header">{{phone.name}}</h1>
-      <p>{{phone.description}}</p>
-      <p style="color: orange;font-weight: bold;font-size: 16pt;">${{phone.price}}</p>
+      <h1 class="page-header">{{$ctrl.phone.name}}</h1>
+      <p>{{$ctrl.phone.description}}</p>
+      <p style="color: orange;font-weight: bold;font-size: 16pt;">${{$ctrl.phone.price}}</p>
       <button type="button" class="btn btn-xs btn-default" data-toggle="modal" data-target="#buy-modal">Buy</button>
       <ul>
         <li>
           <span>Availability and Networks</span>
           <dl>
             <dt>Availability</dt>
-            <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
+            <dd ng-repeat="availability in $ctrl.phone.availability">{{availability}}</dd>
           </dl>
           <dl>
             <dt>Infrared</dt>
-            <dd>{{phone.connectivity.infrared | checkmark}}</dd>
+            <dd>{{$ctrl.phone.connectivity.infrared | checkmark}}</dd>
             <dt>GPS</dt>
-            <dd>{{phone.connectivity.gps | checkmark}}</dd>
+            <dd>{{$ctrl.phone.connectivity.gps | checkmark}}</dd>
           </dl>
         </li>
         <li>
           <span>Additional Features</span>
-          <dd>{{phone.additionalFeatures}}</dd>
+          <dd>{{$ctrl.phone.additionalFeatures}}</dd>
         </li>
       </ul>
     </div>
@@ -60,7 +60,7 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <p>{{phone.fulldescription}}</p>
+      <p>{{$ctrl.phone.fulldescription}}</p>
     </div>
   </div>
 </div>

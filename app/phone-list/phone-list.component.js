@@ -1,23 +1,24 @@
 angular.
-  module('phoneList').
+  module('phoneShop').
   component('phoneList', {
     templateUrl: 'phone-list/phone-list.template.html',
-    controller: ['$scope', 'Phone', 'Cart', PhoneListController]
+    controller: ['Phone', 'Cart', PhoneListController]
   });
 
-function PhoneListController($scope, Phone, Cart) {
-  $scope.phones    = Phone.query();
-  $scope.orderProp = 'price';
-  $scope.query     = '';
-  $scope.modal     = {};
-  $scope.addToCart = addToCart;
-  $scope.openModal = openModal;
+function PhoneListController(Phone, Cart) {
+  var self = this;
+  self.phones    = Phone.query();
+  self.orderProp = 'price';
+  self.query     = '';
+  self.modal     = {};
+  self.addToCart = addToCart;
+  self.openModal = openModal;
 
   function addToCart(phoneId) {
     Cart.addToCart(phoneId);
   }
 
   function openModal(phone) {
-    $scope.modal.phone = phone;
+    self.modal.phone = phone;
   }
 }

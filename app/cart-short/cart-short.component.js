@@ -1,12 +1,13 @@
 angular.
-  module('cartShort').
+  module('phoneShop').
   component('cartShort', {
     templateUrl: 'cart-short/cart-short.template.html',
-    controller: ['$scope', 'Phone', 'Cart', CartDetailController]
+    controller: ['$scope', 'Phone', 'Cart', CartShortController]
   });
 
-function CartDetailController($scope, Phone, Cart) {
-  $scope.short = {cnt: 0, sum: 0};
+function CartShortController($scope, Phone, Cart) {
+  var self = this;
+  self.short = {cnt: 0, sum: 0};
 
   $scope.$watch(
     getCurrentCart,
@@ -16,8 +17,7 @@ function CartDetailController($scope, Phone, Cart) {
 
   var self = this;
   var currentCart = Cart.currentCart();
-  var phones = Phone.query();
-  phones.$promise.then(function(result) {
+  var phones = Phone.query({}, function(result) {
     phones = result;
     var phonesObj = phones.reduce(function(obj, cur) {
       obj[cur.id] = {
@@ -28,15 +28,14 @@ function CartDetailController($scope, Phone, Cart) {
       return obj;
     }, {});
     for (phone in currentCart) {
-      $scope.short.cnt += currentCart[phone];
-      $scope.short.sum += currentCart[phone] * phonesObj[phone].price;
+      self.short.cnt += currentCart[phone];
+      self.short.sum += currentCart[phone] * phonesObj[phone].price;
     }
   });
 
   function getCurrentCart() { return Cart.currentCart(); }
   function setShortCart(current, prev) {
-    var phones = Phone.query();
-    phones.$promise.then(function(result) {
+    var phones = Phone.query({}, function(result) {
       phones = result;
       var phonesObj = phones.reduce(function(obj, cur) {
         obj[cur.id] = {
@@ -46,10 +45,10 @@ function CartDetailController($scope, Phone, Cart) {
         };
         return obj;
       }, {});
-      $scope.short = {cnt: 0, sum: 0};
+      self.short = {cnt: 0, sum: 0};
       for (phone in current) {
-        $scope.short.cnt += current[phone];
-        $scope.short.sum += current[phone] * phonesObj[phone].price;
+        self.short.cnt += current[phone];
+        self.short.sum += current[phone] * phonesObj[phone].price;
       }
     });
   }

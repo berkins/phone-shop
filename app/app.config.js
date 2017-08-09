@@ -1,19 +1,22 @@
 angular.
   module('phoneShop').
-  config(['$locationProvider', '$routeProvider', AppConfig]);
+  config(['$stateProvider', '$urlRouterProvider', AppConfig]);
 
-function AppConfig($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+function AppConfig($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('phoneList', {
+    url: '/phones',
+    template: '<phone-list></phone-list>'
+  });
 
-  $routeProvider.
-    when('/phones', {
-      template: '<phone-list></phone-list>'
-    }).
-    when('/phones/:phoneId', {
-      template: '<phone-detail></phone-detail>'
-    }).
-    when('/cart', {
-      template: '<cart-detail></cart-detail>'
-    }).
-    otherwise('/phones');
+  $stateProvider.state('phoneDetail', {
+    url: '/phones/:phoneId',
+    template: '<phone-detail></phone-detail>'
+  });
+
+  $stateProvider.state('cartDetail', {
+    url: '/cart',
+    template: '<cart-detail></cart-detail>'
+  });
+
+  $urlRouterProvider.otherwise('/phones');
 }
