@@ -6,8 +6,8 @@ angular.
   });
 
 function CartShortController($scope, Phone, Cart) {
-  var self = this;
-  self.short = {cnt: 0, sum: 0};
+  var vm = this;
+  vm.short = {cnt: 0, sum: 0};
 
   $scope.$watch(
     getCurrentCart,
@@ -15,7 +15,6 @@ function CartShortController($scope, Phone, Cart) {
     true
   );
 
-  var self = this;
   var currentCart = Cart.currentCart();
   var phones = Phone.query({}, function(result) {
     phones = result;
@@ -28,8 +27,8 @@ function CartShortController($scope, Phone, Cart) {
       return obj;
     }, {});
     for (phone in currentCart) {
-      self.short.cnt += currentCart[phone];
-      self.short.sum += currentCart[phone] * phonesObj[phone].price;
+      vm.short.cnt += currentCart[phone];
+      vm.short.sum += currentCart[phone] * phonesObj[phone].price;
     }
   });
 
@@ -45,10 +44,10 @@ function CartShortController($scope, Phone, Cart) {
         };
         return obj;
       }, {});
-      self.short = {cnt: 0, sum: 0};
+      vm.short = {cnt: 0, sum: 0};
       for (phone in current) {
-        self.short.cnt += current[phone];
-        self.short.sum += current[phone] * phonesObj[phone].price;
+        vm.short.cnt += current[phone];
+        vm.short.sum += current[phone] * phonesObj[phone].price;
       }
     });
   }

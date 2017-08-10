@@ -1,1 +1,10 @@
-Shopping cart: {{$ctrl.short.cnt}}, ${{$ctrl.short.sum}}
+<small>
+  <table>
+    <tr>
+      <td style="padding-left:5px;">{{$ctrl.short.cnt || 0}} {{$ctrl.short.cnt == 1 ? 'product' : 'products'}}</td>
+    </tr>
+    <tr>
+      <td style="padding-left:5px;">{{$ctrl.short.sum || 0}} RUR</td>
+    </tr>
+  </table>
+</small>

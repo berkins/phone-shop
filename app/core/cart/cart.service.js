@@ -11,11 +11,11 @@ function CorePhone(Phone) {
     currentCart:    currentCart
   };
 
-  function addToCart(phoneId) { 
+  function addToCart(phoneId, cnt) { 
     if (phoneId in cart) {
-      cart[phoneId]++;
+      cart[phoneId] += cnt;
     } else {
-      cart[phoneId] = 1;
+      cart[phoneId] = cnt;
     }
   }
 

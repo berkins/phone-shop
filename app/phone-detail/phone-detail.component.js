@@ -6,19 +6,35 @@ angular.
   });
 
 function PhoneDetailController($stateParams, Phone, Cart) {
-  var self = this;
-  self.mainImageUrl = '';
-  self.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) {
-    self.setImage(phone.images[0]);
+  var vm = this;
+  vm.mainImageUrl = '';
+  vm.cnt = 1;
+
+  vm.cntMinus  = cntMinus;
+  vm.cntPlus   = cntPlus;
+
+  vm.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) {
+    vm.setImage(phone.images[0]);
   });
-  self.setImage  = setImage;
-  self.addToCart = addToCart;
+  vm.setImage  = setImage;
+  vm.addToCart = addToCart;
 
   function setImage(imageUrl) {
-    self.mainImageUrl = imageUrl;
+    vm.mainImageUrl = imageUrl;
   }
 
   function addToCart(phoneId) {
-    Cart.addToCart(phoneId);
+    Cart.addToCart(phoneId, vm.cnt);
+  }
+
+  function cntMinus() {
+    vm.cnt--;
+    if (vm.cnt < 1) {
+      vm.cnt = 1;
+    }
+  }
+
+  function cntPlus() {
+    vm.cnt++;
   }
 }

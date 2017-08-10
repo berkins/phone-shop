@@ -6,19 +6,35 @@ angular.
   });
 
 function PhoneListController(Phone, Cart) {
-  var self = this;
-  self.phones    = Phone.query();
-  self.orderProp = 'price';
-  self.query     = '';
-  self.modal     = {};
-  self.addToCart = addToCart;
-  self.openModal = openModal;
+  var vm = this;
+  vm.phones    = Phone.query();
+  vm.orderProp = 'price';
+  vm.query     = '';
+  vm.modal     = {};
+  vm.cnt       = 1;
+
+  vm.addToCart = addToCart;
+  vm.openModal = openModal;
+  vm.cntMinus  = cntMinus;
+  vm.cntPlus   = cntPlus;
 
   function addToCart(phoneId) {
-    Cart.addToCart(phoneId);
+    Cart.addToCart(phoneId, vm.cnt);
   }
 
   function openModal(phone) {
-    self.modal.phone = phone;
+    vm.cnt = 1;
+    vm.modal.phone = phone;
+  }
+
+  function cntMinus() {
+    vm.cnt--;
+    if (vm.cnt < 1) {
+      vm.cnt = 1;
+    }
+  }
+
+  function cntPlus() {
+    vm.cnt++;
   }
 }

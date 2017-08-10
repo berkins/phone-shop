@@ -8,9 +8,9 @@
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Price</th>
-              <th>Count</th>
-              <th>Total</th>
+              <th style="text-align: right;">Price</th>
+              <th style="text-align: right;">Count</th>
+              <th style="text-align: right;">Total</th>
               <th></th>
             </tr>
           </thead>
@@ -24,16 +24,98 @@
               <td>
                 <a href="#!/phones/{{phone.id}}"><h4>{{phone.name}}</h4></a>
               </td>
-              <td>{{phone.price}}</td>
-              <td>{{phone.cnt}}</td>
-              <td>{{phone.cnt * phone.price}}</td>
+              <td align="right">{{phone.price}} RUR</td>
+              <td align="right">{{phone.cnt}}</td>
+              <td align="right">{{phone.cnt * phone.price}} RUR</td>
               <td>
                 <button ng-click="$ctrl.deleteFromCart(phone.id)" type="button">Delete</button>
               </td>
             </tr>
+            <tr>
+              <td colspan="4" align="right">Total cart</td>
+              <td align="right">{{$ctrl.total}} RUR</td>
+              <td></td>
+            </tr>
           </tbody>
         </table>
-        <span ng-if="!($ctrl.cart.length)">Shopping cart is empty</span>
+        <p ng-if="!($ctrl.cart.length)">Shopping cart is empty</p>
+
+        <form class="form-horizontal" ng-if="$ctrl.cart.length">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="date-input" class="col-sm-4 control-label">Date</label>
+                <div class="input-group col-sm-8" style="padding-left: 15px;padding-right: 15px;">
+                  <input 
+                    uib-datepicker-popup="dd.MM.yyyy"
+                    type="text"
+                    class="form-control"
+                    is-open="$ctrl.opened"
+                    datepicker-options="$ctrl.dateOptions"
+                    close-text="Close"
+                    ng-model="$ctrl.formData.date"
+                  />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">+</button>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="phone-input" class="col-sm-4 control-label">Phone</label>
+                <div class="col-sm-8">
+                  <input 
+                    type="text"
+                    id="phone-input"
+                    class="form-control"
+                    mask="(ddd) ddd-dd-dd"
+                    ng-model="$ctrl.formData.phone"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="firstname-input" class="col-sm-4 control-label">First name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="firstname-input" placeholder="First name" ng-model="$ctrl.formData.firstname" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lastname-input" class="col-sm-4 control-label">Last name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="lastname-input" placeholder="Last name" ng-model="$ctrl.formData.lastname" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="address-input" class="col-sm-4 control-label">Address</label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    id="address-input"
+                    class="form-control"
+                    placeholder="Address"
+                    ng-model="$ctrl.formData.address"
+                  />
+                </div>
+              </div>
+              <div class="form-group"> 
+                <div class="col-sm-offset-4 col-sm-8">
+                  <button type="button" class="btn btn-primary" ng-click="$ctrl.submitForm()">Order shipping</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <ya-map 
+                style="width: 90%;min-height: 250px;position: absolute;"
+                ya-zoom="10"
+                ya-center="{{$ctrl.center}}"
+                ya-before-init="$ctrl.beforeInit()"
+                ya-event-click="$ctrl.mapClick($event)"
+              >
+                <ya-geo-object ng-repeat="point in $ctrl.geoObjects" ya-source="point"></ya-geo-object>
+              </ya-map>
+            </div>
+          </div>
+        </form>
+
       </div>
     </div>
   </div>

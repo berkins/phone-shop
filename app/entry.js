@@ -7,6 +7,11 @@ require('../node_modules/angular/angular.min');
 require('../node_modules/angular-resource/angular-resource.min');
 require('../node_modules/angular-ui-router/release/angular-ui-router.min');
 
+require('angular-bootstrap-npm');
+require('../node_modules/ng-mask/dist/ngMask.min');
+
+require('../external_modules/ya-map-2.1');
+
 require('./app');
 require('./app.config');
 
@@ -19,5 +24,6 @@ require('./core/cart/cart.service');
 
 require('./phone-list/phone-list.component');
 require('./phone-detail/phone-detail.component');
+// require('./phone-modal/phone-modal.component');
 require('./cart-short/cart-short.component');
 require('./cart-detail/cart-detail.component');
