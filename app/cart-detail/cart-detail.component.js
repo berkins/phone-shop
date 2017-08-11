@@ -125,6 +125,7 @@ function CartDetailController($scope, Phone, Cart) {
   }
 
   function submitForm() {
+    vm.formData.total = vm.total;
     console.log(vm.formData);
   }
 }

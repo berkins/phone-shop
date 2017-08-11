@@ -34,11 +34,13 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("app/bundle/bundle.css"),
-    new UglifyJSPlugin(),
+    new UglifyJSPlugin({
+      comments: false
+    }),
     new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery'
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
   ]
 };
