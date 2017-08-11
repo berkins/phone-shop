@@ -28,7 +28,7 @@
               <td align="right">{{phone.cnt}}</td>
               <td align="right">{{phone.cnt * phone.price | price}} RUR</td>
               <td>
-                <button ng-click="$ctrl.deleteFromCart(phone.id)" type="button">Delete</button>
+                <button type="button" class="btn btn-xs btn-danger" ng-click="$ctrl.deleteFromCart(phone.id)">Delete</button>
               </td>
             </tr>
             <tr>
@@ -100,7 +100,7 @@
               </div>
               <div class="form-group"> 
                 <div class="col-sm-offset-4 col-sm-8">
-                  <button type="button" class="btn btn-primary" ng-click="$ctrl.submitForm()">Order shipping</button>
+                  <button type="button" class="btn btn-sm btn-primary" ng-click="$ctrl.submitForm()">Order shipping</button>
                 </div>
               </div>
             </div>
