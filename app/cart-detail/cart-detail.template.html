@@ -52,6 +52,7 @@
                     class="form-control"
                     is-open="$ctrl.opened"
                     datepicker-options="$ctrl.dateOptions"
+                    show-button-bar="false"
                     close-text="Close"
                     ng-model="$ctrl.formData.date"
                   />
@@ -67,7 +68,8 @@
                     type="text"
                     id="phone-input"
                     class="form-control"
-                    mask="(999) 999-9999"
+                    restrict="reject"
+                    mask="+dd?(ddd)ddd-dddd"
                     ng-model="$ctrl.formData.phone"
                   />
                 </div>
