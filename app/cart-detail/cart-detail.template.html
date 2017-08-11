@@ -24,16 +24,16 @@
               <td>
                 <a href="#!/phones/{{phone.id}}"><h4>{{phone.name}}</h4></a>
               </td>
-              <td align="right">{{phone.price}} RUR</td>
+              <td align="right">{{phone.price | price}} RUR</td>
               <td align="right">{{phone.cnt}}</td>
-              <td align="right">{{phone.cnt * phone.price}} RUR</td>
+              <td align="right">{{phone.cnt * phone.price | price}} RUR</td>
               <td>
                 <button ng-click="$ctrl.deleteFromCart(phone.id)" type="button">Delete</button>
               </td>
             </tr>
             <tr>
               <td colspan="4" align="right">Total cart</td>
-              <td align="right">{{$ctrl.total}} RUR</td>
+              <td align="right">{{$ctrl.total | price}} RUR</td>
               <td></td>
             </tr>
           </tbody>
@@ -67,7 +67,7 @@
                     type="text"
                     id="phone-input"
                     class="form-control"
-                    mask="(ddd) ddd-dd-dd"
+                    mask="(999) 999-9999"
                     ng-model="$ctrl.formData.phone"
                   />
                 </div>

@@ -1,48 +1,3 @@
-<div class="modal fade" id="buy-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add to cart</h4>
-      </div>
-      <div class="modal-body">
-
-        <table>
-          <tr>
-            <td style="padding-left:5px;" rowspan="3">
-              <img ng-src="{{$ctrl.modal.phone.imageUrl}}" height="100px" alt="{{phone.name}}" />
-            </td>
-            <td style="padding-left:5px;" colspan="2">{{$ctrl.modal.phone.name}}</td>
-          </tr>
-          <tr>
-            <td style="padding-left:5px;">Count:</td>
-            <td style="padding-left:5px;">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button" ng-click="$ctrl.cntMinus()">-</button>
-                </span>
-                <input type="text" class="form-control" ng-model="$ctrl.cnt" />
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button" ng-click="$ctrl.cntPlus()">+</button>
-                </span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding-left:5px;">Sum:</td>
-            <td style="padding-left:5px;">{{$ctrl.modal.phone.price * $ctrl.cnt}} RUR</td>
-          </tr>
-        </table>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-        <button ng-click="$ctrl.addToCart($ctrl.modal.phone.id)" type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Add to cart</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
@@ -53,8 +8,8 @@
             <img ng-src="{{phone.imageUrl}}" width="100%" alt="{{phone.name}}" />
           </a>
           <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
-          <p style="color: orange;font-weight: bold;">{{phone.price}} RUR</p>
-          <button ng-click="$ctrl.openModal(phone)" type="button" class="btn btn-xs btn-default" data-toggle="modal" data-target="#buy-modal">Add to cart</button>
+          <p style="color: orange;font-weight: bold;">{{phone.price | price}} RUR</p>
+          <button ng-click="$ctrl.openComponentModal(phone)" type="button" class="btn btn-xs btn-default">Add to cart</button>
         </div>
       </div>
     </div>

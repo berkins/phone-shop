@@ -1,11 +1,38 @@
 <div class="modal-header">
-  <h3 class="modal-title" id="modal-title">{{$ctrl.phone.name}}</h3>
+  <button type="button" class="close" aria-label="Close" ng-click="$ctrl.cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4 class="modal-title" id="modal-title">Add to cart</h4>
 </div>
 <div class="modal-body" id="modal-body">
-  <input type="text" ng-model="vm.cnt" />
-  Phone: <b>{{$ctrl.phone.name}}</b>
+  <table>
+    <tr>
+      <td style="padding-left:5px;" rowspan="3">
+        <img ng-src="{{$ctrl.phone.imageUrl}}" height="100px" alt="{{phone.name}}" />
+      </td>
+      <td style="padding-left:5px;" colspan="2">{{$ctrl.phone.name}}</td>
+    </tr>
+    <tr>
+      <td style="padding-left:5px;">Count:</td>
+      <td style="padding-left:5px;">
+        <div class="input-group" style="width: 150px;">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="$ctrl.cntMinus()">-</button>
+          </span>
+          <input type="text" class="form-control" ng-model="$ctrl.cnt" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="$ctrl.cntPlus()">+</button>
+          </span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding-left:5px;">Sum:</td>
+      <td style="padding-left:5px;">{{$ctrl.phone.price * $ctrl.cnt | price}} RUR</td>
+    </tr>
+  </table>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
-  <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+  <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Close</button>
+  <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">Add to cart</button>
 </div>

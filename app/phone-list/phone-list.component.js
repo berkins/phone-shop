@@ -2,39 +2,31 @@ angular.
   module('phoneShop').
   component('phoneList', {
     templateUrl: 'phone-list/phone-list.template.html',
-    controller: ['Phone', 'Cart', PhoneListController]
+    controller: ['$uibModal', 'Phone', 'Cart', PhoneListController]
   });
 
-function PhoneListController(Phone, Cart) {
+function PhoneListController($uibModal, Phone, Cart) {
   var vm = this;
   vm.phones    = Phone.query();
-  vm.orderProp = 'price';
-  vm.query     = '';
+  // vm.orderProp = 'price';
+  // vm.query     = '';
   vm.modal     = {};
   vm.cnt       = 1;
 
-  vm.addToCart = addToCart;
-  vm.openModal = openModal;
-  vm.cntMinus  = cntMinus;
-  vm.cntPlus   = cntPlus;
+  vm.openComponentModal = openComponentModal;
 
-  function addToCart(phoneId) {
-    Cart.addToCart(phoneId, vm.cnt);
-  }
+  function openComponentModal(phone) {
+    var modalInstance = $uibModal.open({
+      component: 'phoneModal',
+      resolve: {
+        phone: function () {
+          return phone;
+        }
+      }
+    });
 
-  function openModal(phone) {
-    vm.cnt = 1;
-    vm.modal.phone = phone;
-  }
-
-  function cntMinus() {
-    vm.cnt--;
-    if (vm.cnt < 1) {
-      vm.cnt = 1;
-    }
-  }
-
-  function cntPlus() {
-    vm.cnt++;
-  }
+    modalInstance.result.then(function(res) {
+      Cart.addToCart(phone.id, res);
+    });
+  };
 }

@@ -66,7 +66,6 @@ function CartDetailController($scope, Phone, Cart) {
       mapStateAutoApply: true
     }).then(function (result) {
       var coords = result.geoObjects.position;
-
       vm.center = coords;
       setPoint(coords);
     });

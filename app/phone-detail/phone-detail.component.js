@@ -25,6 +25,7 @@ function PhoneDetailController($stateParams, Phone, Cart) {
 
   function addToCart(phoneId) {
     Cart.addToCart(phoneId, vm.cnt);
+    vm.cnt = 1;
   }
 
   function cntMinus() {

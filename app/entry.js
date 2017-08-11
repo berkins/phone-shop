@@ -1,14 +1,13 @@
 require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 
-require('../node_modules/jquery/dist/jquery.min');
-require('../node_modules/bootstrap/dist/js/bootstrap.min');
+require('jquery');
+require('bootstrap');
 
-require('../node_modules/angular/angular.min');
-require('../node_modules/angular-resource/angular-resource.min');
-require('../node_modules/angular-ui-router/release/angular-ui-router.min');
-
-require('angular-bootstrap-npm');
-require('../node_modules/ng-mask/dist/ngMask.min');
+require('angular');
+require('angular-resource');
+require('angular-ui-router');
+require('angular-ui-bootstrap');
+require('ng-mask');
 
 require('../external_modules/ya-map-2.1');
 
@@ -16,14 +15,13 @@ require('./app');
 require('./app.config');
 
 require('./core/core.module');
-require('./core/checkmark/checkmark.filter');
-require('./core/phone/phone.module');
 require('./core/phone/phone.service');
-require('./core/cart/cart.module');
 require('./core/cart/cart.service');
+require('./core/checkmark/checkmark.filter');
+require('./core/price/price.filter');
 
 require('./phone-list/phone-list.component');
 require('./phone-detail/phone-detail.component');
-// require('./phone-modal/phone-modal.component');
+require('./phone-modal/phone-modal.component');
 require('./cart-short/cart-short.component');
 require('./cart-detail/cart-detail.component');

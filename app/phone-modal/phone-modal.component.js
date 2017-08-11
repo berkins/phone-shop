@@ -2,61 +2,45 @@ angular.
   module('phoneShop').
   component('phoneModal', {
     templateUrl: 'phone-modal/phone-modal.template.html',
-    controller: ['Phone', 'Cart', PhoneModalController]
-  });
-
-function PhoneModalController(Phone, Cart) {
-  var vm = this;
-  vm.phones    = Phone.query();
-  vm.modal     = {};
-  vm.addToCart = addToCart;
-  vm.openModal = openModal;
-  vm.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) {
-    vm.setImage(phone.images[0]);
-  });
-
-  function addToCart(phoneId) {
-    Cart.addToCart(phoneId);
-  }
-
-  function setImage(imageUrl) {
-    vm.mainImageUrl = imageUrl;
-  }
-
-  function openModal(phone) {
-    vm.modal.phone = phone;
-  }
-}
-
-
-
-angular.
-  module('phoneShop').
-  component('phoneModal', {
-    templateUrl: 'phone-modal/phone-modal.template.html',
     bindings: {
-      resolve: '<',
       close: '&',
-      dismiss: '&'
+      dismiss: '&',
+      modalInstance: '<',
+      resolve: '<'
     },
-    controller: ['Phone', 'Cart', PhoneModalController]
+    controller: [ phoneModalController ]
   });
 
-function PhoneModalController() {
+function phoneModalController() {
   var vm = this;
 
-  vm.$onInit = function () {
-    vm.items = vm.resolve.items;
-    vm.selected = {
-      item: vm.items[0]
-    };
+  vm.cnt      = 1;
+  vm.$onInit  = onInit;
+  vm.ok       = ok;
+  vm.cancel   = cancel;
+  vm.cntMinus = cntMinus;
+  vm.cntPlus  = cntPlus;
+
+  function onInit() {
+    vm.phone = vm.resolve.phone;
   };
 
-  vm.ok = function () {
-    vm.close({$value: $ctrl.selected.item});
+  function ok() {
+    vm.close({$value: vm.cnt});
   };
 
-  vm.cancel = function () {
+  function cancel() {
     vm.dismiss({$value: 'cancel'});
   };
+
+  function cntMinus() {
+    vm.cnt--;
+    if (vm.cnt < 1) {
+      vm.cnt = 1;
+    }
+  }
+
+  function cntPlus() {
+    vm.cnt++;
+  }
 }

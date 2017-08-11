@@ -1,5 +1,5 @@
 angular.
-  module('core.phone').
+  module('core').
   factory('Phone', ['$resource', CorePhone]);
 
 function CorePhone($resource) {

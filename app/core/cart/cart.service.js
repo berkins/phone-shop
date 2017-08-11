@@ -1,5 +1,5 @@
 angular.
-  module('core.cart').
+  module('core').
   factory('Cart', [ 'Phone', CorePhone]);
 
 function CorePhone(Phone) {
