@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/, 
-        loader: "file-loader?limit=10000name=app/bundle/[hash].[ext]"
+        loader: "file-loader?limit=10000&publicPath=/bundle/&outputPath=app/bundle/&name=[hash:6].[ext]"
       }
     ]
   },
