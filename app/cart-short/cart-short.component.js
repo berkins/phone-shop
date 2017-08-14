@@ -15,25 +15,10 @@ function CartShortController($scope, Phone, Cart) {
     true
   );
 
-  var currentCart = Cart.currentCart();
-  var phones = Phone.query({}, function(result) {
-    phones = result;
-    var phonesObj = phones.reduce(function(obj, cur) {
-      obj[cur.id] = {
-        name: cur.name,
-        price: cur.price,
-        imageUrl: cur.imageUrl
-      };
-      return obj;
-    }, {});
-    for (phone in currentCart) {
-      vm.short.cnt += currentCart[phone];
-      vm.short.sum += currentCart[phone] * phonesObj[phone].price;
-    }
-  });
+  setShortCart(getCurrentCart());
 
   function getCurrentCart() { return Cart.currentCart(); }
-  function setShortCart(current, prev) {
+  function setShortCart(current) {
     var phones = Phone.query({}, function(result) {
       phones = result;
       var phonesObj = phones.reduce(function(obj, cur) {

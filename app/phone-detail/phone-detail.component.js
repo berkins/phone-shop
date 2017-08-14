@@ -12,12 +12,12 @@ function PhoneDetailController($stateParams, Phone, Cart) {
 
   vm.cntMinus  = cntMinus;
   vm.cntPlus   = cntPlus;
+  vm.setImage  = setImage;
+  vm.addToCart = addToCart;
 
   vm.phone = Phone.get({phoneId: $stateParams.phoneId}, function(phone) {
     vm.setImage(phone.images[0]);
   });
-  vm.setImage  = setImage;
-  vm.addToCart = addToCart;
 
   function setImage(imageUrl) {
     vm.mainImageUrl = imageUrl;

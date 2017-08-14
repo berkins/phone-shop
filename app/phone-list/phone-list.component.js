@@ -8,7 +8,7 @@ angular.
 function PhoneListController($uibModal, Phone, Cart) {
   var vm = this;
   vm.phones    = Phone.query();
-  // vm.orderProp = 'price';
+  vm.orderProp = 'price'; // default sort
   // vm.query     = '';
   vm.modal     = {};
   vm.cnt       = 1;
