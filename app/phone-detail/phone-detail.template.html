@@ -17,15 +17,21 @@
       <p style="color: orange;font-weight: bold;font-size: 16pt;">{{$ctrl.phone.price || 0 | price}} RUR</p>
       <div class="input-group" style="width: 150px;">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="$ctrl.cntMinus()">-</button>
+          <button class="btn btn-default" type="button" ng-click="$ctrl.cntMinus()">
+            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+          </button>
         </span>
         <input type="text" class="form-control" ng-model="$ctrl.cnt" />
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="$ctrl.cntPlus()">+</button>
+          <button class="btn btn-default" type="button" ng-click="$ctrl.cntPlus()">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
         </span>
       </div>
       <br>
-      <button type="button" class="btn btn-sm btn-primary" ng-click="$ctrl.addToCart($ctrl.phone.id)" >Add to cart</button>
+      <button type="button" class="btn btn-sm btn-primary" ng-click="$ctrl.addToCart($ctrl.phone.id)" >
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart
+      </button>
       <ul>
         <li>
           <span>Availability and Networks</span>

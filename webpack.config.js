@@ -22,13 +22,20 @@ module.exports = {
       {
         test: /\.css$/, 
         loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
+          fallback: 'style-loader',
+          use: 'css-loader'
         })
       },
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/, 
-        loader: "file-loader?limit=10000&publicPath=/bundle/&outputPath=app/bundle/&name=[hash:6].[ext]"
+        loader: 'file-loader',
+        options: {
+          limit: '10000',
+          name: 'app/bundle/[hash:6].[ext]',
+          publicPath: function(url) {
+            return url.replace('bundle/', '../')
+          },
+        }
       }
     ]
   },
