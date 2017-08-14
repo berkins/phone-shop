@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <h1 class="page-header">Shopping cart</h1>
       <div class="table-responsive">
-        <table class="table table-striped" ng-if="$ctrl.cart.length">
+        <table class="table" ng-if="$ctrl.cart.length">
           <thead>
             <tr>
               <th></th>
@@ -34,7 +34,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="4" align="right">Total cart</td>
+              <td colspan="4" align="right"><b>Total cart</b></td>
               <td align="right">{{$ctrl.total | price}} RUR</td>
               <td></td>
             </tr>

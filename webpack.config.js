@@ -33,7 +33,7 @@ module.exports = {
           limit: '10000',
           name: 'app/bundle/[hash:6].[ext]',
           publicPath: function(url) {
-            return url.replace('bundle/', '../')
+            return url.replace('bundle/', '../');
           },
         }
       }
